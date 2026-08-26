@@ -1,26 +1,57 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Stack+Sans+Headline&display=swap"); */
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #F8FAFA;
+  --foreground: #76719E;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-light-purple: #E0B6ED;
+  --color-light-blue: #BCFEFF;
+  --color-teal: #D8EDEB;
+  --color-light-border: #dce5e5;
+  --color-light-hover: #F7EFF9;
+  --color-light-hover-border: #E3CCE9;
+  --color-dark: #76719E;
+
+
+  --font-pjs: var(--font-plus-jakarta-sans);
+  --font-ssh: var(--font-stack-sans-headline);
+  --font-sgeo: var(--font-special-gothic-expanded-one);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #76719E;
+    --foreground: #F8FAFA;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* font-family: var(--font-pjs); */
 }
+
+h1{
+  font-family: var(--font-sgeo);
+}
+h2,h3,h4{
+  font-family: var(--font-ssh);
+}
+
+h2{
+  font-size: var(--text-3xl);
+  font-weight: 700;
+
+}
+
+h3{
+  /* font-size: var(--text-xl); */
+  font-weight: 500;
+}
+
