@@ -8,7 +8,7 @@ interface Props {
   title: string;
   short_desc: string;
   tags: Array<string>;
-  id: string;
+  id: number;
   thumbnail_url: string;
 }
 

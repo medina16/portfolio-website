@@ -9,8 +9,13 @@ import {
   faChevronCircleRight,
   faChevronCircleLeft,
 } from "@fortawesome/free-solid-svg-icons";
+import { Media } from "@/payload-types";
 
-const ImageSlider = ({ images }) => {
+type ImageSliderProps = {
+  images: Media[];
+};
+
+const ImageSlider = ({ images }: ImageSliderProps) => {
   const [currentImage, setCurrentImage] = useState(0);
   if (!images || images.length === 0) {
     return null;
@@ -26,7 +31,7 @@ const ImageSlider = ({ images }) => {
     );
   };
 
-  const goToImage = (index) => {
+  const goToImage = (index: number) => {
     setCurrentImage(index);
   };
 
@@ -49,10 +54,10 @@ return () => clearTimeout(timeOut);
         <div key={index} className="w-full h-full flex-shrink-0 relative">
           <Image
             className="object-cover"
-            src={images[index].image.url}
+            src={images[index].url ?? "/"}
             fill
             sizes="(max-width: 725px) 100vw, 725px"
-            alt="pic"
+            alt="img"
           />
         </div>
       ))}

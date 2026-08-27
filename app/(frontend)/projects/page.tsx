@@ -14,11 +14,10 @@ import ContactInfo from "../components/contact";
 export default async function Projects({
   searchParams,
 }: {
-  searchParams: Promise<{ page?: string }>
+  searchParams: Promise<{ page?: string }>;
 }) {
-
-  const { page: pageParam } = await searchParams
-  const currentPage = Number(pageParam) || 1
+  const { page: pageParam } = await searchParams;
+  const currentPage = Number(pageParam) || 1;
   const payload = await getPayload({ config });
   const {
     docs: projects,
@@ -34,30 +33,28 @@ export default async function Projects({
 
   return (
     <div className="max-w-5xl 2xl:max-w-7xl flex-col items-left justify-center flex gap-6 pb-10 px-3 pt-7  flex-auto">
-          <SectionTitle title="My Projects"></SectionTitle>
-          <ul className="grid grid-cols-2 lg:grid-cols-3 gap-3 w-full">
-            {projects.map((project) => (
-              <li key={project.id}>
-                
-                  <ProjectCard
-                    title={project.title}
-                    id={project.id}
-                    year={project.year}
-                    short_desc={project.shortDescription}
-                    tags={project.tags?.map((t) => t.tagName) ?? []}
-                    thumbnail_url={
-                      project.thumbnailImage &&
-                      typeof project.thumbnailImage === "object"
-                        ? project.thumbnailImage.url
-                        : "/"
-                    }
-                  ></ProjectCard>
-                
-              </li>
-            ))}
-          </ul>
+      <SectionTitle title="My Projects"></SectionTitle>
+      <ul className="grid grid-cols-2 lg:grid-cols-3 gap-3 w-full">
+        {projects?.map((project) => (
+          <li key={project.id}>
+            <ProjectCard
+              title={project.title ?? "N/A"}
+              id={project.id}
+              year={project.year ?? "N/A"}
+              short_desc={project.shortDescription ?? "N/A"}
+              tags={project.tags?.map((t) => t.tagName ?? "").filter(Boolean) ?? []}
+              thumbnail_url={
+                typeof project.thumbnailImage === "object" &&
+                project.thumbnailImage
+                  ? (project.thumbnailImage.url ?? "")
+                  : ""
+              }
+            ></ProjectCard>
+          </li>
+        ))}
+      </ul>
 
-          {/* <div className="flex gap-4 justify-center mt-6">
+      {/* <div className="flex gap-4 justify-center mt-6">
         {hasPrevPage && (
           <Link href={`/projects?page=${currentPage - 1}`}>← Previous</Link>
         )}
@@ -67,8 +64,8 @@ export default async function Projects({
         )}
       </div> */}
 
-          <SectionTitle title="Contact Me"></SectionTitle>
-          <ContactInfo></ContactInfo>
-        </div>
+      <SectionTitle title="Contact Me"></SectionTitle>
+      <ContactInfo></ContactInfo>
+    </div>
   );
 }
