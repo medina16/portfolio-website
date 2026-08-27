@@ -46,8 +46,8 @@ export default async function Projects({
               thumbnail_url={
                 typeof project.thumbnailImage === "object" &&
                 project.thumbnailImage
-                  ? (project.thumbnailImage.url ?? "")
-                  : ""
+                  ? (project.thumbnailImage.url ?? "/")
+                  : "/"
               }
             ></ProjectCard>
           </li>
