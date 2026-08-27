@@ -1,12 +1,14 @@
 {
   "name": "web-porto",
   "version": "0.1.0",
+  "type": "module",
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "payload generate:types && next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "generate:types": "payload generate:types"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^7.3.1",

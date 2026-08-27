@@ -19,10 +19,6 @@ export default buildConfig({
     importMap: {
       baseDir: path.resolve(dirname),
     },
-    // livePreview:{
-    //   url: "",
-    //   collections: [Media.slug, Projects.slug, TechOrTools.slug],
-    // }
   },
   collections: [Users, Media, Projects, TechOrTools],
   editor: lexicalEditor(),
