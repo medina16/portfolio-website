@@ -15,7 +15,7 @@ export default function Button({
 
   return (
     <Link href={link} target="_blank" rel="noopener noreferrer"
-      className={` z-100 shadow-sm bg-white py-2 px-5 inline-flex items-center gap-3 rounded-xl hover:bg-light-hover  hover:shadow-none`}
+      className={` z-100 shadow-sm bg-white py-2 px-5 inline-flex items-center gap-3 rounded-xl hover:bg-light-hover  hover:shadow-none w-full md:w-auto justify-center`}
     >
       <div className="flex items-center justify-center shrink-0">
         <Image
@@ -26,7 +26,7 @@ export default function Button({
           className="object-contain opacity-80"
         />
       </div>
-      <span className="text-sm">{text}</span>
+      <span className="text-lg md:text-sm">{text}</span>
     </Link>
   );
 }

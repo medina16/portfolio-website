@@ -65,7 +65,7 @@ export default async function Home() {
               <Tag text="MySQL" img_src="/Logos/MySQLL.png" logo_wide></Tag>
               <Tag text="Typescript" img_src="/Logos/TypeScriptt.svg"></Tag>
               <Tag text="Vercel" img_src="/Logos/Vercel.svg"></Tag>
-              <Tag text="Javascript" img_src="/Logos/Javascriptt.png"></Tag>
+              <Tag text="Javascript" img_src="/Logos/JavaScript.png"></Tag>
               <Tag text="Tailwind" img_src="/Logos/Tailwind.svg"></Tag>
             </div>
           </div>

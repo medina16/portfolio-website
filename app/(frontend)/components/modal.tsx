@@ -9,13 +9,25 @@ export default function Modal({children}: {children: React.ReactNode}) {
 
   useEffect(() => {
     dialogRef.current?.showModal();
+
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "unset";
+    };
   }, []);
+
+  const handleBackdropClick = (e: React.MouseEvent<HTMLDialogElement>) => {
+    if (e.target === dialogRef.current) {
+      dialogRef.current?.close();
+    }
+  };
 
   return (
     <dialog
       ref={dialogRef}
+      onClick={handleBackdropClick}
       onClose={() => router.back()}
-      className=" fixed z-10 left-0 right-0 top-0 bottom-0 mx-auto bg-black/60
+      className=" fixed z-10 left-0 right-0 top-0 bottom-0 mx-auto backdrop:bg-black/60
       "
     >
       <div
@@ -25,7 +37,7 @@ export default function Modal({children}: {children: React.ReactNode}) {
       overflow-x-scroll md:overflow-x-auto"
       >
         <button
-          className="absolute top-2 right-4 border-none"
+          className="cursor-pointer absolute top-2 right-4 border-none hover:text-light-purple"
           onClick={() => dialogRef.current?.close()}
         >
           <span className="text-2xl">&times;</span>

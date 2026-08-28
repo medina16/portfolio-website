@@ -48,12 +48,12 @@ export default async function Projects({ params }: Props) {
   // console.log(project);
 
   return (
-    <div className="max-w-5xl 2xl:max-w-7xl flex-col items-left justify-center flex gap-6 pb-10 px-3 pt-7  flex-auto">
+    <div className="max-w-5xl 2xl:max-w-7xl flex-col items-left justify-center flex gap-6 p-3 pb-10 pt-7  flex-auto w-full">
       <Link href="/projects">
         <FontAwesomeIcon icon={faArrowLeft} className="mr-3"></FontAwesomeIcon>
         Back to Projects
       </Link>
-      <div className=" w-full h-fit bg-white p-10 text-dark flex sm:flex-row flex-col items-center justify-center gap-10 border-1 border-light-border bg-white rounded-xl shadow-md p-8 size-auto">
+      <div className=" w-full h-fit bg-white text-dark flex sm:flex-row flex-col items-center justify-center gap-10 border-1 border-light-border bg-white rounded-xl shadow-md p-6 md:p-8 size-auto">
         <div className="flex flex-col gap-8 h-full w-full">
           {/* Kiri */}
           <div className="flex flex-col">
@@ -62,8 +62,8 @@ export default async function Projects({ params }: Props) {
                 {project.year ?? "N/A"}
               </span>
               <h2
-                className="text-lg pb-3"
-                style={{ lineHeight: "100%", fontWeight: "600" }}
+                className="pb-3"
+                style={{ lineHeight: "100%", fontWeight: "600"}}
               >
                 {project.title ?? "N/A"}
               </h2>
@@ -107,6 +107,7 @@ export default async function Projects({ params }: Props) {
                   return (
                     <div key={tech.id}>
                       <Tag
+                      small
                         text={tech.name ?? "N/A"}
                         img_src={
                           typeof tech.logoImage === "object" && tech.logoImage
