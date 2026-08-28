@@ -1,3 +1,4 @@
+import { getProject } from "@/app/(frontend)/lib/getProject";
 import Tag from "@/app/(frontend)/components/tag";
 import Image from "next/image";
 import { faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
@@ -11,18 +12,33 @@ import { RichText } from "@payloadcms/richtext-lexical/react";
 import Link from "next/link";
 import { Media } from "@/payload-types";
 
+export async function generateStaticParams() {
+  const payload = await getPayload({ config });
+  const { docs: projects } = await payload.find({
+    collection: 'projects',
+    limit: 1000,
+  });
+
+  return projects.map((project) => ({
+    id: String(project.id),
+  }));
+}
+
+export const revalidate = 3600;
+
 type Props = {
   params: Promise<{ id: string }>;
 };
 
 export default async function ProjectModal({ params }: Props) {
   const { id } = await params;
-  const payload = await getPayload({ config });
-  const project = await payload.findByID({
-    collection: "projects",
-    id: id,
-    depth: 2,
-  });
+  const project = await getProject(id);
+  // const payload = await getPayload({ config });
+  // const project = await payload.findByID({
+  //   collection: "projects",
+  //   id: id,
+  //   depth: 2,
+  // });
 
   return (
     <Modal>

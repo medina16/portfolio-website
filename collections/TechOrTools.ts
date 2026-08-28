@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { revalidatePath } from 'next/cache';
 
 export const TechOrTools: CollectionConfig = {
   slug: 'tech_or_tools',
@@ -18,4 +19,18 @@ export const TechOrTools: CollectionConfig = {
         defaultValue: 'false'
     }
   ],
+  hooks: {
+  afterChange: [
+    async () => {
+      revalidatePath('/projects', 'layout')
+      revalidatePath('/', 'layout')
+    },
+  ],
+  afterDelete: [
+    async () => {
+      revalidatePath('/projects', 'layout')
+      revalidatePath('/', 'layout')
+    },
+  ],
+},
 }

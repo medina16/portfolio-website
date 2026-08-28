@@ -1,6 +1,8 @@
+// export const revalidate = 3600;
+
+import { getProject } from "../../lib/getProject";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faEnvelope,
   faUpRightFromSquare,
   faArrowLeft,
 } from "@fortawesome/free-solid-svg-icons";
@@ -8,7 +10,6 @@ import {
 import Image from "next/image";
 import Tag from "../../components/tag";
 import Link from "next/link";
-import Button from "../../components/button";
 import SectionTitle from "../../components/sectiontitle";
 import ContactInfo from "../../components/contact";
 
@@ -19,18 +20,27 @@ import config from "@/payload.config";
 import ImageSlider from "../../components/imageSlider";
 import { Media } from "@/payload-types";
 
+export async function generateStaticParams() {
+  const payload = await getPayload({ config });
+  const { docs: projects } = await payload.find({
+    collection: 'projects',
+    limit: 1000,
+  });
+
+  return projects.map((project) => ({
+    id: String(project.id),
+  }));
+}
+
+export const revalidate = 3600;
+
 type Props = {
   params: Promise<{ id: string }>;
 };
 
 export default async function Projects({ params }: Props) {
   const { id } = await params;
-  const payload = await getPayload({ config });
-  const project = await payload.findByID({
-    collection: "projects",
-    id: id,
-    depth: 2,
-  });
+  const project = await getProject(id);
 
   //   const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
   // const project = await response.json();

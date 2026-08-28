@@ -1,25 +1,21 @@
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-
-import Image from "next/image";
 import SectionTitle from "../components/sectiontitle";
 import ProjectCard from "../components/projectcard";
-import Button from "../components/button";
-import Link from "next/link";
 
 import { getPayload } from "payload";
 import config from "@/payload.config";
 import ContactInfo from "../components/contact";
 
-export default async function Projects({
-  searchParams,
-}: {
-  searchParams: Promise<{ page?: string }>;
-}) {
-  const { page: pageParam } = await searchParams;
-  const currentPage = Number(pageParam) || 1;
+export default async function Projects(
+//   {
+//   searchParams,
+// }: {
+//   searchParams: Promise<{ page?: string }>;
+// }
+) {
+  // const { page: pageParam } = await searchParams;
+  // const currentPage = Number(pageParam) || 1;
   const payload = await getPayload({ config });
   const {
     docs: projects,
@@ -29,7 +25,7 @@ export default async function Projects({
   } = await payload.find({
     collection: "projects",
     limit: 6,
-    page: currentPage,
+    // page: currentPage,
     sort: "-sortDate",
   });
 

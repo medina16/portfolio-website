@@ -1,5 +1,5 @@
 import type { CollectionConfig } from 'payload'
-import { TechOrTools } from './TechOrTools'
+import { revalidatePath } from 'next/cache';
 
 export const Projects: CollectionConfig = {
   slug: 'projects',
@@ -85,4 +85,20 @@ export const Projects: CollectionConfig = {
       ]
     }
   ],
+  hooks: {
+  afterChange: [
+    async ({ doc }) => {
+      revalidatePath('/')
+      revalidatePath('/projects')
+      revalidatePath(`/projects/${doc.id}`)
+    },
+  ],
+  afterDelete: [
+    async ({ doc }) => {
+      revalidatePath('/')
+      revalidatePath('/projects')
+      revalidatePath(`/projects/${doc.id}`)
+    },
+  ],
+},
 }
