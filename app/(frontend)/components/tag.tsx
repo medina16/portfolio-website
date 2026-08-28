@@ -25,7 +25,7 @@ export default function Tag({
 
   return (
     <div
-      className={`h-full inline-flex items-center gap-2 rounded-lg border border-light-border hover:bg-light-hover hover:border-light-hover-border hover:shadow-none ${sizeClasses}`}
+      className={`inline-flex items-center gap-2 rounded-lg border border-light-border hover:bg-light-hover hover:border-light-hover-border hover:shadow-none ${sizeClasses}`}
     >
       <div className="flex items-center justify-center shrink-0">
         <Image

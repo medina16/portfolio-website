@@ -26,12 +26,7 @@ export default function Navbar(){
                     height={50}
                     className="hidden md:block"
                   />
-                  {/* <Image
-                      src="/PatternMini.svg"
-                      alt="Decorative"
-                      width={110}
-                      height={30}
-                    /> */}
+                
                 </div>
               </div>
     );

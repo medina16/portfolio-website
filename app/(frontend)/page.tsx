@@ -32,7 +32,7 @@ export default async function Home() {
   });
 
   return (
-    <div className="max-w-5xl 2xl:max-w-7xl flex-col items-center justify-center flex gap-6 pb-10 px-3 pt-7  flex-auto">
+    <div className="max-w-5xl 2xl:max-w-7xl flex-col items-center justify-center flex gap-6 p-3 pb-10 pt-7  flex-auto w-full">
       <SectionTitle title="About Me"></SectionTitle>
       <div className="flex sm:flex-row flex-col items-center justify-center gap-10 h-fit border-1 border-light-border bg-white rounded-xl shadow-md p-8 transition duration-300 hover:shadow-xl hover:scale-102">
         <div className="flex-none">

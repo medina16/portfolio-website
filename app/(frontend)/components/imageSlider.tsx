@@ -4,11 +4,11 @@ import React, { useState, useEffect } from "react";
 
 import Image from "next/image";
 import ImageDot from "./imageDot";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faChevronCircleRight,
-  faChevronCircleLeft,
-} from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import {
+//   faChevronCircleRight,
+//   faChevronCircleLeft,
+// } from "@fortawesome/free-solid-svg-icons";
 import { Media } from "@/payload-types";
 
 type ImageSliderProps = {
@@ -25,11 +25,11 @@ const ImageSlider = ({ images }: ImageSliderProps) => {
     setCurrentImage((prevImage) => (prevImage + 1) % images.length);
   };
 
-  const goToPrevImage = () => {
-    setCurrentImage(
-      (prevImage) => (prevImage - 1 + images.length) % images.length,
-    );
-  };
+  // const goToPrevImage = () => {
+  //   setCurrentImage(
+  //     (prevImage) => (prevImage - 1 + images.length) % images.length,
+  //   );
+  // };
 
   const goToImage = (index: number) => {
     setCurrentImage(index);

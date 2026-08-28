@@ -22,10 +22,10 @@ export default function ProjectCard({
 }: Props) {
   return (
     <div
-      className="md:flex-1 w-full h-full flex flex-col shadow-md bg-white rounded-md border-light-border border-1
+      className="md:flex-1 w-full h-full relative flex flex-col shadow-md bg-white rounded-md border-light-border border-1
     transition duration-300 ease-in-out hover:scale-102 hover:shadow-xl"
     >
-      <div className="rounded-t-xl border-b-1 border-light-border h-45">
+      <div className="rounded-t-xl border-b-1 border-light-border h-20 md:h-45">
         <Image
           src={thumbnail_url}
           alt="Thumbnail"
@@ -49,7 +49,7 @@ export default function ProjectCard({
           ))}
         </div>
 
-        <button className="mt-4 group relative  bg-radial rounded-lg from-[#E196EB] from-0% to-[#C5EDF7] to-120%  w-fit">
+        <button className="hidden md:block mt-4 group relative  bg-radial rounded-lg from-[#E196EB] from-0% to-[#C5EDF7] to-120%  w-fit">
           <Link href={"/projects/" + id}>
             <div className="absolute inset-0 bg-radial from-[#E196EB] from-0% to-[#C5EDF7] to-90% opacity-0 rounded-lg transition-opacity duration-300 ease-in-out group-hover:opacity-100" />
             <div className="relative z-10 flex items-center gap-1 py-2 px-4">
@@ -66,6 +66,7 @@ export default function ProjectCard({
           </Link>
         </button>
       </div>
+      <Link className="h-full w-full absolute block md:hidden" href={"/projects/" + id}></Link>
     </div>
   );
 }

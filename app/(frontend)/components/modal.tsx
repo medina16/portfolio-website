@@ -1,11 +1,7 @@
 "use client";
 
-import Tag from "@/app/(frontend)/components/tag";
 import { useRouter } from "next/navigation";
-import React, { Children, useEffect, useRef } from "react";
-import Image from "next/image";
-import { faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useEffect, useRef } from "react";
 
 export default function Modal({children}: {children: React.ReactNode}) {
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -25,7 +21,8 @@ export default function Modal({children}: {children: React.ReactNode}) {
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full md:w-5/6 md:h-5/6 bg-white text-dark 
       flex flex-col gap-10 border-1 
-      border-light-border bg-white rounded-none md:rounded-xl shadow-md p-5 md:p-8 fixed inset-0 size-auto"
+      border-light-border bg-white rounded-none md:rounded-xl shadow-md p-5 md:p-8 fixed inset-0 size-auto
+      overflow-x-scroll md:overflow-x-auto"
       >
         <button
           className="absolute top-2 right-4 border-none"

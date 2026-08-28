@@ -30,7 +30,7 @@ export default async function Projects(
   });
 
   return (
-    <div className="max-w-5xl 2xl:max-w-7xl flex-col items-left justify-center flex gap-6 pb-10 px-3 pt-7  flex-auto">
+    <div className="max-w-5xl 2xl:max-w-7xl flex-col items-left justify-center flex gap-6 pb-10 px-3 pt-7  flex-auto w-full">
       <SectionTitle title="My Projects"></SectionTitle>
       <ul className="grid grid-cols-2 lg:grid-cols-3 gap-3 w-full">
         {projects?.map((project) => (
